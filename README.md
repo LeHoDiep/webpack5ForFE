@@ -1,19 +1,15 @@
-# 🚀 Welcome to your new awesome project!
+# 🚀 HAHA dont readme any more
 
 This project has been created using **webpack-cli**, you can now run
 
 ```
-npm run build
-```
-
-or
-
-```
-yarn build
+npm run watch
+npm run build:dev
 ```
 
 to bundle your application
 
+<<<<<<< HEAD
 đây là cây thư mục của dự án
 project-root/
 │
@@ -36,3 +32,6 @@ project-root/
 ├── webpack.config.js # File cấu hình Webpack
 ├── README.md # Tài liệu hướng dẫn và mô tả dự án
 └── .babelrc
+=======
+"I created this folder to support those of you who need to code frontend but don't want to use frameworks. In this repository, I use: PUG, SCSS, TS."
+>>>>>>> b6d28c474a886401ab1778706334abec3d39d8ff
