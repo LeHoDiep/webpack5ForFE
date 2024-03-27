@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 
-const pages = ["index", "components/button/button" /* other page names... */];
+const pages = ["index", "components/button/button", "components/card/card"];
 
 const plugins = pages.map(
   (page) =>
@@ -40,7 +40,7 @@ const config = {
     rules: [
       {
         test: /\.pug$/,
-        loader: "pug-loader",
+        loader: ["html-loader", "pug-html-loader"],
       },
       {
         test: /\.(ts|tsx)$/i,
@@ -57,6 +57,13 @@ const config = {
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        options: {
+          name: "[path][name].[ext]",
+          context: path.resolve(__dirname, "src"),
+          outputPath: "dist",
+          publicPath: "../",
+          useRelativePaths: true,
+        },
         type: "asset",
       },
 
