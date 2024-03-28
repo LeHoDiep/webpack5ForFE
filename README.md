@@ -9,7 +9,6 @@ npm run build:dev
 
 to bundle your application
 
-<<<<<<< HEAD
 đây là cây thư mục của dự án
 project-root/
 │
@@ -34,4 +33,4 @@ project-root/
 └── .babelrc
 =======
 "I created this folder to support those of you who need to code frontend but don't want to use frameworks. In this repository, I use: PUG, SCSS, TS."
->>>>>>> b6d28c474a886401ab1778706334abec3d39d8ff
+
