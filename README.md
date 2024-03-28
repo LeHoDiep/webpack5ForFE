@@ -10,6 +10,7 @@ npm run build:dev
 to bundle your application
 
 đây là cây thư mục của dự án
+```bash
 project-root/
 │
 ├── src/ # Thư mục chứa mã nguồn của ứng dụng
@@ -31,6 +32,6 @@ project-root/
 ├── webpack.config.js # File cấu hình Webpack
 ├── README.md # Tài liệu hướng dẫn và mô tả dự án
 └── .babelrc
-=======
+```
 "I created this folder to support those of you who need to code frontend but don't want to use frameworks. In this repository, I use: PUG, SCSS, TS."
 
