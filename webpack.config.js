@@ -4,8 +4,15 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
+const globLib = require("glob");
 
-const pages = ["index", "components/button/button", "components/card/card"];
+function getPugFiles(srcFolder) {
+  return globLib.sync(`${srcFolder}/**/*.pug`).map((file) => file.slice(4, -4)); // remove 'src/' prefix and '.pug' suffix
+}
+
+// const pages = ["index", "components/button/button", "components/card/card"];
+const pages = getPugFiles("src");
+// console.log(pages);
 
 const plugins = pages.map(
   (page) =>
@@ -40,7 +47,7 @@ const config = {
     rules: [
       {
         test: /\.pug$/,
-        loader: ["html-loader", "pug-html-loader"],
+        use: ["pug-loader", "pug-html-loader"],
       },
       {
         test: /\.(ts|tsx)$/i,
@@ -56,19 +63,38 @@ const config = {
         use: [stylesHandler, "css-loader", "postcss-loader"],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        options: {
-          name: "[path][name].[ext]",
-          context: path.resolve(__dirname, "src"),
-          outputPath: "dist",
-          publicPath: "../",
-          useRelativePaths: true,
-        },
-        type: "asset",
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "assets/images/[name].[ext]",
+            },
+          },
+          {
+            loader: "image-webpack-loader",
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.9],
+                speed: 4,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              webp: {
+                quality: 75,
+              },
+            },
+          },
+        ],
       },
-
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
   resolve: {
