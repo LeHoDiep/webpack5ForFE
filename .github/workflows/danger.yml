@@ -1,0 +1,15 @@
+name: Danger js
+on: [pull_request]
+jobs:
+  danger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master # này là checkout code về máy
+      - name: Use Node.js 18.x # sử dụng nodejs phiên bản 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Danger
+        uses: npx danger ci
+        env:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
