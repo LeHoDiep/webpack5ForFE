@@ -10,6 +10,6 @@ jobs:
         with:
           node-version: 18.x
       - name: Danger
-        uses: npx danger ci
+        run: npx danger ci
         env:
           github_token: ${{ secrets.GITHUB_TOKEN }}
