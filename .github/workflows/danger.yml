@@ -12,4 +12,4 @@ jobs:
       - name: Danger
         run: npx danger ci
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DANGER_TEST_PULL_REQUEST }}
